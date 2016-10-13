@@ -3,12 +3,12 @@
     <%= form_tag(startsort_url, method: :post) do %>
         <h1>Sortear Códigos Ganadores</h1>
         <hr/>
-        <p class="text-danger"><b>Antes de realizar el sorteo, deben existir códigos válidos para el mismo.</b></p>
+        <p class="text-danger"><b>Antes de realizar el sorteo, deben existir por lo menos 2 códigos códigos válidos para el mismo.</b></p>
         <p class="text-danger"></p>
         <div class="row">
           <div class="col-md-6 field">
             <h4><b>¿Cuantos GANADORES?</b></h4>
-            <small>Códigos o consumidores que NO HAN GANADO: <b><%= invoices_available.count %></b></small>
+            <small>Códigos que NO HAN GANADO: <b><%= codes_available_for_sort.count %></b></small>
             <div class="row">
               <div class="col-md-12">
                 <%= number_field_tag :ganadores, 0, class: 'form-control' %>

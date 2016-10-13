@@ -97,6 +97,6 @@ class WinnersController < ApplicationController
     end
 
     def codes_available
-      @codes = Code.where(winner?: false, is_used?: true, chivas_code?: true)#.order('RAND()')
+      @codes = Code.where(winner?: false, is_used?: true, chivas_code?: true).order('RAND()')
     end
 end

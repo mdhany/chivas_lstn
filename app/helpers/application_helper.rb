@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def invoices_available
-    Invoice.where(winner?: false)
+  def codes_available_for_sort
+    Code.where(winner?: false, is_used?: true, chivas_code?: true)
   end
 
 end
