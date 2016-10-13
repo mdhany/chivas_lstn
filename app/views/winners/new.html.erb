@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-12">
     <%= form_tag(startsort_url, method: :post) do %>
-        <h1>Sortear Ganadores</h1>
+        <h1>Sortear Códigos Ganadores</h1>
         <hr/>
-        <p class="text-danger"><b>DEBEN TOMAR EN CUENTA la disponibilidad de inventario antes de sortear y la cantidad de facturas sin ganar disponibles (La muestra debajo del campo ¿Cuantos GANADORES?)</b></p>
-        <p class="text-danger">* Recuerden, estos ganadores son desplegados en el front inmediatamente.</p>
+        <p class="text-danger"><b>Antes de realizar el sorteo, deben existir códigos válidos para el mismo.</b></p>
+        <p class="text-danger"></p>
         <div class="row">
           <div class="col-md-6 field">
             <h4><b>¿Cuantos GANADORES?</b></h4>
-            <small>Facuras o consumidores que NO HAN GANADO: <b><%= invoices_available.count %></b></small>
+            <small>Códigos o consumidores que NO HAN GANADO: <b><%= invoices_available.count %></b></small>
             <div class="row">
               <div class="col-md-12">
                 <%= number_field_tag :ganadores, 0, class: 'form-control' %>
@@ -28,7 +28,7 @@
 
             <div class="portlet box green">
               <div class="portlet-title">
-                <div class="caption">Regalos disponibles </div>
+                <div class="caption">Codigos válidos para sorteo </div>
                 <div class="tools">
                   <a class="collapse" href="javascript:;"></a>
                   <a class="config" data-toggle="modal" href="#portlet-config"></a>
@@ -41,21 +41,28 @@
                   <table class="table table-hover">
                     <thead>
                     <tr>
-                      <th>Nombre</th>
-                      <th>Inventario</th>
-                      <th>Creación</th>
+                      <th>ID</th>
+                      <th>Código</th>
+                      <th>Estado</th>
+                      <th>Consumidor</th>
                       <th colspan="3"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <% @gifts.each do |i| %>
-                        <tr>
-                          <td><%= i.name %></td>
-                          <td><%= i.inventory %></td>
-                          <td><%= i.created_at %></td>
-                        </tr>
+                    <% if @codes %> 
+                      <% @codes.each do |i| %>
+                          <tr>
+                            <td><%= i.id %></td>
+                            <td><%= i.code %></td>
+                            <td><%= i.is_used? ? 'Registrado': 'Sin registrar' %></td>
+                            <td><%= link_to i.customer.name, customer_path(i.customer) if i.customer %></td>
+                          </tr>
+                      <% end %>
+                    <% else %>
+                      No hay disponibles códigos válidos para realizar sorteo.
                     <% end %>
+
                     </tbody>
                   </table>
                 </div>

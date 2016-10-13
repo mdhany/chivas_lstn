@@ -1,21 +1,17 @@
 class WinnersController < ApplicationController
   before_action :authenticate_user!
-  before_action :gifts_available, only: [:startsort, :new]
+  before_action :codes_available, only: [:startsort, :new]
   before_action :set_winner, only: [:show, :edit, :update, :destroy]
 
   def startsort
     #Buscar facturas random que NO HAYAN GANADO
-    @ganadores = Invoice.where(winner?: false).order('RAND()').first(params[:ganadores])
+    @ganadores = @codes.first(params[:ganadores])
     #Crear un ganador de cada factura
       #Tomando de forma aleatorea de los regalos disponibles.
     @ganadores.each do |i|
-      regalo = @gifts.first
-      w = Winner.create(invoice_id: i.id, customer_id: i.customer_id, gift_id: regalo.id)
+      w = Winner.create(code_id: i.id, customer_id: i.customer_id)
       #Despues de crearlo, buscar aleatoreamente un regalo que tenga inventario y asignarselo.after() do
       if w
-        regalo.update_attribute(:inventory, regalo.inventory - 1)
-        #Luego descontarlo del inventario.
-
         i.update_attribute(:winner?, true)
         #si se crean con exito, cambiar su estado winner a TRUE
       end
@@ -78,9 +74,13 @@ class WinnersController < ApplicationController
   # DELETE /winners/1
   # DELETE /winners/1.json
   def destroy
-    @winner.destroy
+    #Actualizar Codigo a que ya no es utilizado
+    if @winner.code.update_attribute(:winner?, false)
+      @winner.destroy
+    end
+
     respond_to do |format|
-      format.html { redirect_to winners_url, notice: 'Winner was successfully destroyed.' }
+      format.html { redirect_to winners_url, notice: 'El ganador fue eliminado y el codigo liberado' }
       format.json { head :no_content }
     end
   end
@@ -96,7 +96,7 @@ class WinnersController < ApplicationController
       params[:winner]
     end
 
-    def gifts_available
-      @gifts = Gift.where('inventory > 0' ).order('RAND()')
+    def codes_available
+      @codes = Code.where(winner?: false, is_used?: true, chivas_code?: true)#.order('RAND()')
     end
 end

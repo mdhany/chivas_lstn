@@ -108,7 +108,7 @@
               </div>
               <div class="form-group">
                 <div class="form-group">
-                  <%= text_field_tag :identification, nil, class: 'form-control', placeholder: "CEDULA", required: 'required' %>
+                  <%= text_field_tag :identification, nil, class: 'form-control', placeholder: "CEDULA", required: 'required', maxlength: "10" %>
                 </div>
                 <%#= date_field_tag :birth, nil, class: 'form-control', placeholder: "Fecha de nacimiento DD/MM/AAAA", required: 'required' %>
                 <%= label_tag :birth, "Fecha de Nacimiento" %>

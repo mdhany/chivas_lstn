@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010113714) do
+ActiveRecord::Schema.define(version: 20161013045857) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161010113714) do
     t.datetime "updated_at"
     t.boolean  "chivas_code?", default: false
     t.integer  "customer_id"
+    t.boolean  "winner?",      default: false
   end
 
   add_index "codes", ["code"], name: "index_codes_on_code"
@@ -76,10 +77,9 @@ ActiveRecord::Schema.define(version: 20161010113714) do
 
   create_table "winners", force: true do |t|
     t.integer  "customer_id"
-    t.integer  "gift_id"
-    t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "code_id"
   end
 
 end
