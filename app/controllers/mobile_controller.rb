@@ -29,29 +29,35 @@ class MobileController < ApplicationController
 
 
   def participate
-    customer = Customer.find_by email: params[:email]
+    customer = Customer.find_by identification: params[:identification]
 
+    #Si el cliente existe
     if customer
-      customer.invoices.create!([{number: params[:number], picture: params[:picture]}])
+      register_code(customer, params[:code])
+      
+     #En caso de que no exista el cliente debe ser creado   
     else
       fecha = (params[:birth]['(3i)'] + '-' + params[:birth]['(2i)'] + '-' + params[:birth]['(1i)']).to_s
 
-      customer = Customer.create(
+      customer = Customer.new(
           identification: params[:identification],
           name: params[:name],
           birth: fecha.to_s,
-          mobile: params[:mobile],
           email: params[:email]
       )
-      customer.invoices.create!([{number: params[:number], picture: params[:picture]}])
+
+      if customer.save
+        register_code(customer, params[:code])  
+      end  
     end
 
-    respond_to do |format|
-      if customer.name
-          format.html { redirect_to action: :start, anchor: 'inline'}
-          format.js
+        #REdirecccion final despues de registrar customer y codigo
+        if customer.save
+          redirect_to action: :start, anchor: 'inline'
+        else
+          redirect_to start_path, alert: "Lo sentimos. No has podido ser registrado en la aplicación. Revisa tus datos e intenta de nuevo"
         end
-      end
+    
 
   end
 
@@ -68,5 +74,33 @@ class MobileController < ApplicationController
       redirect_to home_path
     end
   end
+
+  def register_code (customer_id, code_string)
+    customer = Customer.find(customer_id)
+    #Upercase todo
+      code_flat = code_string.upcase.split.join
+      #buscar codigo
+      code_result = Code.find_by code: code_flat
+
+      #si el codigo es de CHIVAS o es correcto,crea la asociacion
+        if code_result
+          #Si el codigo no ha sido usado, asignar
+          if code_result.is_used? == false && code_result.chivas_code? == true 
+            #ASIGNAR CODIGO A CUSTOMER
+            if customer.codes << code_result
+              code_result.update_attribute( :is_used?, true)
+            end
+          else
+            redirect_to home_path, alert: 'Lo sentimos, este código no es válido, debido a que no existe o ya fue registrado'
+          end
+
+        #En caso de que no sea de cHIVAS el code, debo crear uno tipo registro
+        else
+          #Crear code NO VALIDO de customer para historial
+          customer.codes.create!(code: code_flat, is_used?: true)
+        end
+
+  end
+
 
 end

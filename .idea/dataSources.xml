@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3192335705">
+    <data-source source="LOCAL" name="MySQL - ctt_development@localhost" uuid="7465664e-3acb-4ce4-8019-0d1a415688f0">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/ctt_development</jdbc-url>
+      <user-name>root</user-name>
+      <schema-pattern>ctt_development.*</schema-pattern>
+      <default-schemas>cn_development.*</default-schemas>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

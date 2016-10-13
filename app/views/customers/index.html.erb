@@ -19,8 +19,7 @@
       <th>Identificacion</th>
       <th>Nacimiento</th>
       <th>Email</th>
-      <th>Telefono</th>
-      <th>Facturas</th>
+      <th>Códigos</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,10 +31,14 @@
         <td><%= customer.identification %></td>
         <td><%= customer.birth %></td>
         <td><%= customer.email %></td>
-        <td><%= customer.mobile %></td>
-        <td><small><%= customer.invoices.count %></small></td>
-        <td><%= link_to 'Ver', customer %></td>
-        <td><%= link_to 'Eliminar', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><small><%= customer.codes.count %></small></td>
+        <td><%= link_to 'Ver detalles y códigos', customer %></td>
+        <td>
+          <%= link_to customer, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="icon-trash"></i>
+          <% end %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,10 @@
-
 <li class="start">
+  <%= link_to codes_path do %>
+      <i class="icon-gift"></i>
+      <span class="title">Codigos</span>
+  <% end %>
+</li>
+<li>
   <%= link_to customers_path do %>
     <i class="icon-group"></i>
     <span class="title">Consumidores</span>
@@ -10,17 +15,5 @@
     <i class="icon-star"></i>
     <span class="title">Ganadores
     </span>
-  <% end %>
-</li>
-<li>
-  <%= link_to invoices_path do %>
-    <i class="icon-bar-chart"></i>
-    <span class="title">Facturas</span>
-  <% end %>
-</li>
-<li>
-  <%= link_to gifts_path do %>
-      <i class="icon-gift"></i>
-      <span class="title">Regalos</span>
   <% end %>
 </li>
