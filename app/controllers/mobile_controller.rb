@@ -33,7 +33,7 @@ class MobileController < ApplicationController
 
     #Si el cliente existe
     if customer
-      register_code(customer, params[:code])
+      register_code(customer.id, params[:code])
       
      #En caso de que no exista el cliente debe ser creado   
     else
@@ -47,7 +47,7 @@ class MobileController < ApplicationController
       )
 
       if customer.save
-        register_code(customer, params[:code])  
+        register_code(customer.id, params[:code])  
       end  
     end
 

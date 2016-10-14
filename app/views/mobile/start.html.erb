@@ -101,16 +101,16 @@
           <div class="formulario div-margin-top">
             <%= form_tag({action: :participate}, multipart: true, id: "consumidor") do %>
             <div class="form-group">
-                  <%= text_field_tag :code, nil, class: 'form-control', placeholder: "Ingresa tu código aquí", required: 'required' %>
+                  <%= text_field_tag :code, nil, class: 'form-control', placeholder: "Ingresa tu código aquí", required: 'required', maxlength: "15"%>
                 </div>
               <div class="form-group">
                 <%= text_field_tag :name, nil, class: 'form-control', placeholder: 'Nombre Completo', required: 'required' %>
               </div>
               <div class="form-group">
                 <div class="form-group">
-                  <%= text_field_tag :identification, nil, class: 'form-control', placeholder: "CEDULA", required: 'required', maxlength: "10" %>
+                  <%= text_field_tag :identification, nil, class: 'form-control', placeholder: "CEDULA", required: 'required', maxlength: "11", max_length: "11", onkeypress: "return isNumeric(event)", oninput: "maxLengthCheck(this)" %>
                 </div>
-                <%#= date_field_tag :birth, nil, class: 'form-control', placeholder: "Fecha de nacimiento DD/MM/AAAA", required: 'required' %>
+
                 <%= label_tag :birth, "Fecha de Nacimiento" %>
                 <br/>
                 <%= date_select :birth, nil, prompt: { day: 'Día', month: 'Mes', year: 'Año' }, use_month_numbers: true, order: [:day, :month, :year], start_year: 1930, end_year: 1998, class: 'form-control', required: 'required' %>
@@ -188,5 +188,22 @@
         $("#blackgb").hide(),
         $(this).hide();
     });
+
+//Limit IDentificacion
+  function maxLengthCheck(object) {
+    if (object.value.length > object.max_length)
+      object.value = object.value.slice(0, object.max_length)
+  }
+    
+  function isNumeric (evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode (key);
+    var regex = /[0-9]|\./;
+    if ( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
 
 <% end -%>
