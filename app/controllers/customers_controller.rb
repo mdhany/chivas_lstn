@@ -65,6 +65,10 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
+    @customer.codes.each do |c|
+      c.update(is_used?: false, winner?: false)
+    end
+
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }

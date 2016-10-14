@@ -91,7 +91,8 @@ class MobileController < ApplicationController
               code_result.update_attribute( :is_used?, true)
             end
           else
-            return false, alert: 'Lo sentimos, este código no es válido, debido a que no existe o ya fue registrado'
+            redirect_to start_path, alert: 'Lo sentimos, este código no es válido, debido a que no existe o ya fue registrado'
+            return false
           end
 
         #En caso de que no sea de cHIVAS el code, debo crear uno tipo registro
