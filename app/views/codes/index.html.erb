@@ -43,6 +43,11 @@
             </tr>
         <% end %>
         </tbody>
+        <div class="row">
+          <div class="col-md-12">
+            <%= will_paginate @codes_registered_ch, :container => false %>
+          </div>
+        </div>
       </table>
     </div>
   </div>
@@ -122,6 +127,10 @@
               <td><%= i.is_used? ? 'Registrado': 'Sin registrar' %></td>
             </tr>
         <% end %>
+
+        <div class="digg_pagination">
+          <%= will_paginate @codes_not_used, :container => false %>
+        </div>
         </tbody>
       </table>
     </div>

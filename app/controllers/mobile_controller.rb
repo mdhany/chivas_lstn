@@ -55,7 +55,7 @@ class MobileController < ApplicationController
         if customer.save
           redirect_to action: :start, anchor: 'inline'
         else
-          redirect_to start_path, alert: "Lo sentimos. No has podido ser registrado en la aplicación. Revisa tus datos e intenta de nuevo"
+          return false, alert: "Lo sentimos. No has podido ser registrado en la aplicación. Revisa tus datos e intenta de nuevo"
         end
     
 
@@ -91,7 +91,7 @@ class MobileController < ApplicationController
               code_result.update_attribute( :is_used?, true)
             end
           else
-            redirect_to home_path, alert: 'Lo sentimos, este código no es válido, debido a que no existe o ya fue registrado'
+            return false, alert: 'Lo sentimos, este código no es válido, debido a que no existe o ya fue registrado'
           end
 
         #En caso de que no sea de cHIVAS el code, debo crear uno tipo registro

@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 
 gem 'devise', '3.4.0'
 gem "koala", "~> 1.10.0rc"
+gem 'will_paginate', '~> 3.1.0'
 
 group :development do
   gem 'meta_request'
