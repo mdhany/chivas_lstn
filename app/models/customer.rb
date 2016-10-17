@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :birth, presence: true
-  validates :identification, presence: true, length: { is: 11 }
+  validates :identification, presence: true, length: { is: 11 }, uniqueness: true
 
   def self.get_customer(email)
     customer = find_by email: email
