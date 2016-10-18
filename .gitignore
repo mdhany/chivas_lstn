@@ -2,3 +2,4 @@
 /config/database.yml
 tmp/
 log/*
+db/lstn.sqlite3

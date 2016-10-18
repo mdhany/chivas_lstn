@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'start', to: 'mobile#start', as: 'start'
 
   post 'participate', to: 'mobile#participate', as: 'participate'
-  post 'reset_code', to: 'codes#reset', as: 'reset_code'
+  post 'reset_code/:id', to: 'codes#reset_code', as: 'reset_code'
 
 
   post 'upload', to: 'mobile#upload', as: 'upload'

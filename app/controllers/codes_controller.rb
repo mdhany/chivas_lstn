@@ -9,6 +9,12 @@ class CodesController < ApplicationController
 
   def reset_code
   	@code = Code.find(params[:id])
+  	if @code.update! is_used?: false, winner?: false, customer_id: nil
+  		w = Winner.find_by code_id: @code.id
+  		w.destroy if w
+ 
+  		redirect_to codes_path, notice: "Codigo fue restaurado"
+  	end
   end	
 
 
