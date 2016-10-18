@@ -7,5 +7,9 @@ class CodesController < ApplicationController
   	@codes_not_valid = Code.where chivas_code?: false
   end
 
+  def reset_code
+  	@code = Code.find(params[:id])
+  end	
+
 
 end

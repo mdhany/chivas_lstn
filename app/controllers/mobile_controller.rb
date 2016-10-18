@@ -52,9 +52,8 @@ class MobileController < ApplicationController
           register_code(customer.id, params[:code])  
         else
           #redirect_to start_path, customer.errors.full_messages[0]
-          redirect_to start_path, alert: "El email digitado ya fue utilizado."
-
-        end  
+          redirect_to start_path, alert: "Lo sentimos. Algunos de tus datos ya están registrados en el sistema. (Email o Cédula)"
+      end  
 
       end
     end  
@@ -98,19 +97,18 @@ class MobileController < ApplicationController
       #buscar codigo
       code_result = Code.find_by code: code_flat
 
+      if code_result.nil?
+          redirect_to start_path, alert: 'Este código NO existe en el sistema. Por favor verifica tu código y trata de nuevo. Si deseas hablar con nosotros escríbenos a chivasdominicana@gmail.com' and return false
+      else
       #si el codigo no ha sido usado y es CHC
         if code_result.is_used? == false && code_result.chivas_code? == true 
           return code_result
-
-      #si el codigo YA HA sido usado y es CHC    
-        elsif code_result.is_used? == true && code_result.chivas_code? == true
-            redirect_to start_path, alert: 'Este código ya fue registrado en el sistema. Si deseas hablar con nosotros escríbenos a chivasdominicana@gmail.com' and return false
-      
-      #Si no encontró el código
+          #si el codigo YA HA sido usado y es CHC    
+            #elsif code_result.is_used? == true && code_result.chivas_code? == true         
+          #Si no encontró el código
         else            
-            redirect_to start_path, alert: 'Este código NO existe en el sistema. Por favor verifica tu código y trata de nuevo. Si deseas hablar con nosotros escríbenos a chivasdominicana@gmail.com' and return false
+          redirect_to start_path, alert: 'Este código ya fue registrado en el sistema. Si deseas hablar con nosotros escríbenos a chivasdominicana@gmail.com' and return false
         end
-
+      end
   end
-
 end
