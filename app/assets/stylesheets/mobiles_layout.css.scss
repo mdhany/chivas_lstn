@@ -522,17 +522,6 @@ ul.banner-social-buttons {
 
 }
 
-//PARA MOVILES
-@media(max-width:380px){
-  #contact h1, .registrate h1{ font-size: 44px;}
-}
-
-@media(max-width:995px) {
-  .intro .intro-body .intro-text {
-    font-size: 18px;
-  }
-}
-
 footer {
   padding: 0;
   color: darkgray;
@@ -637,4 +626,22 @@ input[type="file"]{
 .enviar{ margin-top:20px;}
 .term input[type="checkbox"]{ height:14px; border:solid 1px #000; margin-right:3px;}
 .term a{ font-size:12px; text-decoration: underline; color: #fff;}
+
+
+
+//PARA MOVILES
+@media(max-width:380px){
+  #contact h1, .registrate h1{ font-size: 44px;}
+
+  footer {
+    position: static;
+    bottom: 0;
+  }
+}
+
+@media(max-width:995px) {
+  .intro .intro-body .intro-text {
+    font-size: 18px;
+  }
+}
 
