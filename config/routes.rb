@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
 
   #root 'mobile#social'
-  root 'mobile#start'
+  root 'mobile#end'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
