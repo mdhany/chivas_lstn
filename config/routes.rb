@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get 'codes', to: 'codes#index', as: 'codes'
 
   get 'home', to: 'mobile#home', as: 'home'
+  get 'end', to: 'mobile#end', as: 'end'
   post 'adult', to: 'mobile#adult?', as: 'adult'
-  get 'start', to: 'mobile#start', as: 'start'
+  #get 'start', to: 'mobile#start', as: 'start'
+  get 'start', to: 'mobile#end', as: 'start'
 
   post 'participate', to: 'mobile#participate', as: 'participate'
   post 'reset_code/:id', to: 'codes#reset_code', as: 'reset_code'

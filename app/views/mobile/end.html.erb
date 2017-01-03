@@ -1,0 +1,63 @@
+
+<!-- Intro Header -->
+
+<header class="intro">
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-6 col-sm-6 col-sm-offset-6 ">
+          <h1 class="brand-heading">
+            <%= image_tag "FIN-tl.png", class: 'img-responsive' %></h1>
+          <div class="text-hide gana div-margin-top">
+                            Último sorteo el 10 de enero, ganadores serán anunciados a través de nuestras redes sociales
+                            <%= image_tag "FIN-texto-pag1.png", class: 'img-responsive' %>
+          </div>
+
+                        <div class="col-mb-12 div-margin-top">
+                        </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</header>
+
+
+
+
+
+<%= javascript_tag do -%>
+
+    var thisHash = window.location.hash;
+    jQuery(document).ready(function() {
+        if(window.location.hash) {
+            $(".messageend").show();
+        }
+    }); // ready
+
+    $("#closediv").click(function() {
+        $("#inline").hide(),
+        $("#blackgb").hide(),
+        $(this).hide();
+    });
+
+//Limit IDentificacion
+  function maxLengthCheck(object) {
+    if (object.value.length > object.max_length)
+      object.value = object.value.slice(0, object.max_length)
+  }
+    
+  function isNumeric (evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode (key);
+    var regex = /[0-9]|\./;
+    if ( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
+
+<% end -%>

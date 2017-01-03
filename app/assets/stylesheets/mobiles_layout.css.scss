@@ -534,9 +534,11 @@ ul.banner-social-buttons {
 }
 
 footer {
-  padding: 20px 0;
+  padding: 0;
   color: darkgray;
   font-size:16px;
+  position: relative;
+  bottom: 30px;
 }
 
 footer a{

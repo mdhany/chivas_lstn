@@ -26,6 +26,9 @@ class MobileController < ApplicationController
 
   end
 
+ def end
+
+  end
 
   def participate
     #Buscar codigo en DB
