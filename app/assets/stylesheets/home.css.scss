@@ -1,11 +1,11 @@
 body.home{
 
-  background-image: url(image-path('bg-3.jpg'));
+  background-image: url(image-path('bg-age-gate.jpg'));
   background-color: #000004;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #a08c64;
+  color: #fff;
 
   .header{
     display: block;
@@ -23,10 +23,13 @@ body.home{
   .formedad{ margin-bottom: 40px;}
 
   footer{
+    bottom: 10px;
+
     a{
       padding: 0;
       text-decoration: underline;
       font-weight: bold;
+
     }
   }
 

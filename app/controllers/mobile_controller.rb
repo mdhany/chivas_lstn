@@ -17,12 +17,13 @@ class MobileController < ApplicationController
       redirect_to start_path
       session[:is_adult?] = true
     end
-
-
-
   end
 
   def start
+
+  end
+
+  def semanasanta
 
   end
 

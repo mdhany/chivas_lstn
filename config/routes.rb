@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get 'home', to: 'mobile#home', as: 'home'
   get 'end', to: 'mobile#end', as: 'end'
   post 'adult', to: 'mobile#adult?', as: 'adult'
-  #get 'start', to: 'mobile#start', as: 'start'
-  get 'start', to: 'mobile#end', as: 'start'
+
 
   post 'participate', to: 'mobile#participate', as: 'participate'
   post 'reset_code/:id', to: 'codes#reset_code', as: 'reset_code'
@@ -29,9 +28,15 @@ Rails.application.routes.draw do
     get "acceder", to: "devise/sessions#new"
   end
 
+#PARA INICIO & Age Gate
+  #get 'start', to: 'mobile#start', as: 'start'
+  get 'start', to: 'mobile#end', as: 'start'
+  get 'easter17', to: 'mobile#semanasanta', as: 'semanasanta'
 
   #root 'mobile#social'
   root 'mobile#end'
+
+#---------------  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
