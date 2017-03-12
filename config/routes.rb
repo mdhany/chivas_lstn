@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get 'easter17', to: 'mobile#semanasanta', as: 'semanasanta'
 
   #root 'mobile#social'
-  root 'mobile#end'
+  root 'mobile#home'
 
 #---------------  
 
