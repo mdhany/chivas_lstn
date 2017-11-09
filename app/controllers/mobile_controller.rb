@@ -14,7 +14,8 @@ class MobileController < ApplicationController
     if fecha >= 18.years.ago #Menor de edad
       redirect_to home_path, alert: 'Usted es menor de edad. No puede acceder a este sitio.'
     else
-      redirect_to "https://www.chivas.com/es-do"
+      redirect_to "http://www.chivasrd.com/exito/index.html"
+      #redirect_to "https://www.chivas.com/es-do"
       session[:is_adult?] = true
     end
   end
