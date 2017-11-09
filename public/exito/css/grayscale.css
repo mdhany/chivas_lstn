@@ -210,8 +210,10 @@ img.img-responsive{ margin: 0 auto;}
 }
 
 .premios-inicio img{ margin-top: 40px;}
-.botellas{margin-top: 90px; vertical-align: bottom;}
-
+.botellas {
+    margin-top: 90px;
+    vertical-align: bottom;
+}
 
 .mecanica{
 	display: table;
@@ -303,23 +305,6 @@ img.img-responsive{ margin: 0 auto;}
 
 }
 
-@media(max-width:400px) {
-
-    
-    .intro .intro-body .brand-heading{ margin-bottom: 10px;}
-    .intro .intro-body .brand-heading img{
-        margin-top: 50px;
-        width: 70%;
-    }
-
-    .intro .intro-body .gana{
-        margin-top: 40px;
-    }
-
-    .mecanica .col-lg-4 img{
-        max-width: 80%;
-    }
-}
 
 .btn-circle {
     width: 60px;
@@ -467,7 +452,34 @@ ul.banner-social-buttons {
     ul.banner-social-buttons li:last-child {
         margin-bottom: 0;
     }
+
+    .intro .intro-body .brand-heading{ margin-bottom: 10px;}
+    .intro .intro-body .brand-heading img{
+        margin-top: 20px;
+        width: 50%;
+    }
+
+    .intro .intro-body .gana{
+        margin-top: 40px;
+    }
+
+    .mecanica .col-lg-4 img{
+        max-width: 80%;
+    }
+
+    .intro .intro-body .botellas{margin-top: 20px; vertical-align: top;}
+    .intro .intro-body .botellas img {max-width: 70%;}
 }
+
+@media(max-width:400px) {
+    .intro .intro-body .brand-heading img{
+        margin-top: 00px;
+        width: 50%;
+    }
+
+    .txt-premios{margin-top: -10px;}
+}
+
 
 footer {
     padding: 20px 0;
