@@ -210,10 +210,7 @@ img.img-responsive{ margin: 0 auto;}
 }
 
 .premios-inicio img{ margin-top: 40px;}
-.botellas {
-    margin-top: 90px;
-    vertical-align: bottom;
-}
+
 
 .mecanica{
 	display: table;
@@ -300,7 +297,11 @@ img.img-responsive{ margin: 0 auto;}
         margin-top: 100px;
         max-width: 300px;
     }
-
+    
+    .botellas {
+        margin-top: 90px;
+        vertical-align: bottom;
+    }
 
 
 }
