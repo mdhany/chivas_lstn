@@ -180,7 +180,7 @@ img.img-responsive{ margin: 0 auto;}
 
 .div-margin-top{margin-top: 35px;}
 
-.arrowdown{ position: relative; bottom: 150px; margin-top: 0px;}
+
 
 .copyright{
 	text-align: center;
@@ -280,7 +280,8 @@ img.img-responsive{ margin: 0 auto;}
 
     .premios-inicio img{ max-width: 320px;}
 
-    .arrowdown{ bottom: 30px;}
+    .intro .arrowdown{ position: relative; bottom: 30px; margin-top: 0px;}
+    .mecanica .arrowdown{ position: relative; bottom: 50px; margin-top: 0px;}
 }
 
 @media(min-width:768px) {
@@ -302,6 +303,9 @@ img.img-responsive{ margin: 0 auto;}
         margin-top: 90px;
         vertical-align: bottom;
     }
+    
+    .intro .arrowdown{ position: relative; bottom: 150px; margin-top: 0px;}
+    .mecanica .arrowdown{ position: relative; bottom: 50px; margin-top: 0px;}
 
 
 }
